@@ -43,8 +43,8 @@
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
-* Function Name: 
-* Description  :
+* Function Name: user_pwm_init
+* Description  : init pwm GPIO 17 with frequency LEDC_FREQUENCY
 * Arguments    : none
 * Return Value : none
 ***********************************************************************************************************************/
@@ -72,7 +72,12 @@ void user_pwm_init(void)
     };
     ESP_ERROR_CHECK(ledc_channel_config(&ledc_channel));
 }
-
+/***********************************************************************************************************************
+* Function Name: user_pwm_start
+* Description  : start pwm
+* Arguments    : none
+* Return Value : none
+***********************************************************************************************************************/
 void user_pwm_start(void)
 {
     ledc_fade_start(LEDC_MODE, LEDC_CHANNEL, LEDC_FADE_WAIT_DONE);
@@ -81,12 +86,22 @@ void user_pwm_start(void)
     // Update duty to apply the new value
     ESP_ERROR_CHECK(ledc_update_duty(LEDC_MODE, 0));
 }
-
+/***********************************************************************************************************************
+* Function Name: user_pwm_stop
+* Description  : stop pwm
+* Arguments    : none
+* Return Value : none
+***********************************************************************************************************************/
 void user_pwm_stop(void)
 {
     ledc_stop(LEDC_MODE, LEDC_CHANNEL, 0);
 }
-
+/***********************************************************************************************************************
+* Function Name: user_pwm_set_duty
+* Description  : set duty pwm
+* Arguments    : none
+* Return Value : none
+***********************************************************************************************************************/
 void user_pwm_set_duty(uint8_t _duty)
 {
     uint32_t duty_tranform = 0;

@@ -58,18 +58,16 @@ static void PlantControl_Task(void *pvParameters)
 	led_red(true);
 	vTaskDelay(100 / portTICK_PERIOD_MS);
 
-	// drv_motor_1(true);
 	while (1)
 	{
-		// vibration run
+		// vibration process
 		vibration_run_process();
-		// check button here
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 	}
 }
 /***********************************************************************************************************************
-* Function Name: vsm_btn_event_release
-* Description  :
+* Function Name: vibration_run_process
+* Description  : vibration will run with duration 1s
 * Arguments    : none
 * Return Value : none
 ***********************************************************************************************************************/

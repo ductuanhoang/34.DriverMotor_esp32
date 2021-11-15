@@ -74,7 +74,7 @@ void flash_erase_all_partions(void)
 
 void app_main(void)
 {
-    APP_LOGI("--- APP_MAIN: Smart Hammer Update 14/10/2021......");
+    APP_LOGI("--- APP_MAIN: Motor control Update 14/11/2021......");
     APP_LOGI("--- APP_MAIN: Free memory: %d bytes", esp_get_free_heap_size());
     //Initialize NVS
     esp_err_t ret = nvs_flash_init();
@@ -85,10 +85,14 @@ void app_main(void)
     }
     flash_file_init();
     ESP_ERROR_CHECK(ret);
-    // load save param
+    /* init timer 1ms*/
     UserTimer_Init();
+    /* init gpio enable motor driver*/
     leds_gpio_init();
+    /* init pwm*/
     vibration_init();
+    /* CLI command*/
     console_task_start();
+    /*action task init*/
     plan_task();
 }
