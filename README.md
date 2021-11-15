@@ -1,5 +1,5 @@
-# Smart hammer
+# Smart LRA, ERM motor control
 
 
-This project will read data as : accelerometer and buttons and push add to AWS
+This project will control motor via DRV2603RUNR
 * build in ESP32-IDF
